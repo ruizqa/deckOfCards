@@ -46,7 +46,7 @@ class Deck{
     reset(){
         this.cards.length =0;
         for(let i=0;i<suits.length;i++){
-            for(number in cards){
+            for(let number in cards){
                 this.addCard(new Card(suits[i], cards[number],number))
             }
         }
@@ -85,7 +85,7 @@ class Player{
 
     takeCard(deck){
         if(deck instanceof Deck){
-            this.hand.add(deck.deal())
+            this.hand.push(deck.deal())
         }
     }
 
@@ -95,3 +95,10 @@ class Player{
     }
 
 }
+
+let deck = new Deck()
+deck.reset()
+let jordan = new Player('jordan')
+jordan.takeCard(deck)
+console.log(jordan.hand)
+jordan.hand[0].show()
